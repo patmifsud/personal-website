@@ -1,26 +1,74 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Nav />
+  <div class="container">
+    <aside>
+      <About class="hideon mobile"/>
+      <Availability />
+      <Resume />
+    </aside>
+    <main>
+      <About class="hideon desktop"/>
+      <Projects />
+    </main>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import './assets/global.css';
+import Nav from './components/sections/Nav.vue';
+import About from './components/sections/About.vue';
+import Availability from './components/sections/Availability.vue';
+import Resume from './components/sections/Resume.vue';
+import Projects from './components/sections/Projects.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    Nav,
+    About,
+    Availability,
+    Resume,
+    Projects,
   },
 };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.container{
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+
+  background: var(--colorBg);
+  transition:var(--bgColorTransition);
+
+  z-index: 5;
+
+  max-width: var(--screenWidth);
+  margin: 0 auto;
+  top: var(--sp10);
+  padding: 0 var(--sp4);
+}
+
+section{
+  width:100%;
+}
+
+aside{
+  max-width:25%;
+  width: 100%;
+}
+aside p{
+  max-width:var(--sp9);
+}
+
+main{
+  width:100%;
+}
+
+@media screen and (min-width: 700px){
+  aside{
+    margin-right:var(--sp6);
+  }
 }
 </style>
